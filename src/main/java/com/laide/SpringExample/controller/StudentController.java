@@ -26,4 +26,14 @@ public class StudentController {
         return students;
     }
 
+    @GetMapping("/findByFirstName/{firstName}")
+    public Student getStudentByFirstName(@PathVariable String firstName){
+        return studentRepository.findByFirstname(firstName);
+    }
+
+    @DeleteMapping("/deleteByFirstName/{firstName}")
+    public void deleteStudentByFirstName(@PathVariable String firstName){
+        Student student = studentRepository.findByFirstname(firstName);
+        studentRepository.delete(student);
+    }
 }
